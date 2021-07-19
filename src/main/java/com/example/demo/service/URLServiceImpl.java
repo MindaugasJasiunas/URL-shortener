@@ -20,8 +20,10 @@ public class URLServiceImpl implements URLService {
 
     @Override
     public boolean isShortenedLinkAlreadyInDB(String shortenedLink){
-        if(repository.findURLLinkByShortenedLink(shortenedLink).isPresent()){
-            return true;
+        if(shortenedLink!=null){
+            if(repository.findURLLinkByShortenedLink(shortenedLink).isPresent()){
+                return true;
+            }
         }
         return false;
     }
@@ -29,7 +31,7 @@ public class URLServiceImpl implements URLService {
     @Override
     public URLLink saveURLToDB(URLLink urlLink){
         //encode full link
-        urlLink.setShortenedLink(encodeURL(urlLink.getFullLink()));
+        urlLink.setShortenedLink(encodeURL());
 
         if(isShortenedLinkAlreadyInDB(urlLink.getShortenedLink())){
             return null;
@@ -46,7 +48,7 @@ public class URLServiceImpl implements URLService {
     }
 
     @Override
-    public String encodeURL(String fullLink){
+    public String encodeURL(){
         String randomString = ShortFunction.generate();
         while(isShortenedLinkAlreadyInDB(randomString)){
             randomString = ShortFunction.generate();
@@ -59,4 +61,7 @@ public class URLServiceImpl implements URLService {
         return baseURL+shortenedURL;
     }
 
+    public void setBaseURL(String baseURL) {
+        this.baseURL = baseURL;
+    }
 }

@@ -6,7 +6,7 @@ public interface URLService {
     boolean isShortenedLinkAlreadyInDB(String shortenedLink);
     URLLink saveURLToDB(URLLink urlLink);
     String getFullLinkFromDBByShortenedLink(String shortenedLink);
-    String encodeURL(String fullLink);
+    String encodeURL();
     String getFormattedURLByShortenedURL(String shortenedURL);
 
 }

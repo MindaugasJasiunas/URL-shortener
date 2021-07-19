@@ -22,10 +22,15 @@
         <postgresql.driver.version>42.2.23</postgresql.driver.version>
         <hikaricp.version>3.4.5</hikaricp.version>
         <spring.data.jpa.version>2.1.0.RELEASE</spring.data.jpa.version>
+        <junit.version>5.7.0</junit.version>
+        <mockito.version>3.8.0</mockito.version>
+        <hamcrest.version>2.2</hamcrest.version>
 
         <maven.war.plugin.version>3.3.1</maven.war.plugin.version>
         <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
         <java.version>11</java.version>
+        <maven.surefire.plugin.version>2.22.0</maven.surefire.plugin.version>
+        <maven.failsafe.plugin.version>2.22.0</maven.failsafe.plugin.version>
     </properties>
 
     <dependencies>
@@ -107,6 +112,51 @@
             <version>${hibernate.validator.version}</version>
         </dependency>
 
+        <!-- Tests -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>${mockito.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-junit-jupiter</artifactId>
+            <version>${mockito.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-library</artifactId>
+            <version>${hamcrest.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-inline</artifactId>  <!-- for mocking static -->
+            <version>${mockito.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+
     </dependencies>
 
     <build>
@@ -139,6 +189,28 @@
                         <source>${java.version}</source>
                         <release>${java.version}</release>
                     </configuration>
+                </plugin>
+
+                <!-- Test plugins -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId> <!-- unit tests for Maven. (Plugin kicks-in in Maven TEST phase.) -->
+                    <version>${maven.surefire.plugin.version}</version>                      <!-- target/surefire-reports (we can view reports in xml) -->
+                    <configuration>
+                        <argLine>
+                            --illegal-access=permit
+                        </argLine>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-failsafe-plugin</artifactId> <!-- integration tests for Maven. (Plugin kicks-in for integration tests in Maven integration test phase) -->
+                    <version>${maven.failsafe.plugin.version}</version>
+                        <configuration>
+                            <argLine>
+                                --illegal-access=permit
+                            </argLine>
+                        </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>
