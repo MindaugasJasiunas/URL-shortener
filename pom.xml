@@ -17,6 +17,11 @@
         <jsp.version>2.3.3</jsp.version>
         <servlet.version>4.0.1</servlet.version>
         <jstl.version>1.2</jstl.version>
+        <hibernate.version>5.4.2.Final</hibernate.version>
+        <hibernate.validator.version>6.1.7.Final</hibernate.validator.version>
+        <postgresql.driver.version>42.2.23</postgresql.driver.version>
+        <hikaricp.version>3.4.5</hikaricp.version>
+        <spring.data.jpa.version>2.1.0.RELEASE</spring.data.jpa.version>
 
         <maven.war.plugin.version>3.3.1</maven.war.plugin.version>
         <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
@@ -62,6 +67,46 @@
             <artifactId>jstl-api</artifactId>
             <version>${jstl.version}</version>
         </dependency>
+
+        <!-- Hibernate -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+        <!-- provides the Spring integration with Hibernate -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <!-- Postgres JDBC Driver -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${postgresql.driver.version}</version>
+        </dependency>
+        <!-- HikariCP Connection Pool -->
+        <dependency>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
+            <version>${hikaricp.version}</version>
+        </dependency>
+
+        <!-- Spring Data JPA -->
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+            <version>${spring.data.jpa.version}</version>
+        </dependency>
+
+        <!-- Hibernate Validator -->
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>${hibernate.validator.version}</version>
+        </dependency>
+
     </dependencies>
 
     <build>
