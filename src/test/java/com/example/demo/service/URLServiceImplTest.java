@@ -43,7 +43,7 @@ class URLServiceImplTest {
         //given
         long id=1L;
         String fullLink="http://www.example.com";
-        String shortLink="http://localhost:8080/abcdef";
+        String shortLink="abcdef";
         URLLink urlLink=new URLLink();
         urlLink.setId(id);
         urlLink.setFullLink(fullLink);
