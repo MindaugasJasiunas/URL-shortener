@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.entity.URLLink;
 import com.example.demo.service.URLService;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -13,7 +14,10 @@ import javax.validation.Valid;
 public class MainController {
     private final URLService service;
 
-    public MainController(URLService service) {
+    public MainController(
+//          @Qualifier("URLServiceImpl")
+            @Qualifier("URLServiceV2Impl")
+                    URLService service) {
         this.service = service;
     }
 

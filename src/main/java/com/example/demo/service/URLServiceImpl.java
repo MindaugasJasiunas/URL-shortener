@@ -18,7 +18,6 @@ public class URLServiceImpl implements URLService {
         this.repository = repository;
     }
 
-    @Override
     public boolean isShortenedLinkAlreadyInDB(String shortenedLink){
         if(shortenedLink!=null){
             if(repository.findURLLinkByShortenedLink(shortenedLink).isPresent()){
@@ -47,8 +46,7 @@ public class URLServiceImpl implements URLService {
         return null;
     }
 
-    @Override
-    public String encodeURL(){
+    private String encodeURL(){
         String randomString = ShortFunction.generate();
         while(isShortenedLinkAlreadyInDB(randomString)){
             randomString = ShortFunction.generate();
