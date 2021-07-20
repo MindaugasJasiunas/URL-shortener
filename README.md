@@ -7,4 +7,5 @@ Simple URL shortener using PostgreSQL database to store and access the links.
 ![shortened.jsp](https://github.com/MindaugasJasiunas/URL-shortener/blob/master/screenshots/2.png?raw=true)
  
 ## Alternative
-Could be used without database but with Bijective Function (This is necessary so that you can find an inverse function).
+Could be used with Bijective Function (This is necessary so that you can find an inverse function). 
+Base 62 (alphabet) encoding.
